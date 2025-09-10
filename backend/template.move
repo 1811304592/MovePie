@@ -16,7 +16,7 @@ module __PROJECT_NAME__::__MODULE_NAME__ {
     struct __NFT_NAME__ has key, store {
         id: UID,
         name: String,
-        description: String,
+        description: String, // 新增 description 字段
         url: Url,
     }
 

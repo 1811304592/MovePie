@@ -6,18 +6,16 @@
     }
 
     // Public entry function to mint a new NFT
+    // 注意: 这里 mint 函数的参数需要直接从用户输入获取，所以我们通过占位符来注入
     public entry fun mint(
-        name: vector<u8>,
-        description: vector<u8>,
-        url: vector<u8>,
         ctx: &mut TxContext
     ) {
         let sender = tx_context::sender(ctx);
         let nft = __NFT_NAME__ {
             id: object::new(ctx),
-            name: string::utf8(name),
-            description: string::utf8(description),
-            url: url::new_unsafe_from_bytes(url)
+            name: string::utf8(b"__NFT_NAME__"), // NFT 名称，这里直接使用 Struct 名称
+            description: string::utf8(b"__NFT_DESCRIPTION__"), // NFT 描述
+            url: url::new_unsafe_from_bytes(b"__NFT_IMAGE_URL__") // NFT 图片 URL
         };
 
         event::emit(NFTMinted {
